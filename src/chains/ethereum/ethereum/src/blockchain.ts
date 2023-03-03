@@ -39,7 +39,8 @@ import {
   BUFFER_256_ZERO,
   findInsertPosition,
   KNOWN_CHAINIDS,
-  keccak
+  keccak,
+  Logger
 } from "@ganache/utils";
 import AccountManager from "./data-managers/account-manager";
 import BlockManager from "./data-managers/block-manager";
@@ -65,7 +66,6 @@ import { GanacheTrie } from "./helpers/trie";
 import { ForkTrie } from "./forking/trie";
 import { activatePrecompiles, warmPrecompiles } from "./helpers/precompiles";
 import TransactionReceiptManager from "./data-managers/transaction-receipt-manager";
-import { BUFFER_ZERO } from "@ganache/utils";
 import {
   makeStepEvent,
   VmAfterTransactionEvent,
@@ -104,10 +104,6 @@ type BlockchainTypedEvents = {
   ready: undefined;
   stop: undefined;
 };
-
-interface Logger {
-  log(message?: any, ...optionalParams: any[]): void;
-}
 
 export type BlockchainOptions = {
   db?: string | object;
